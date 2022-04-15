@@ -22,15 +22,13 @@ function MovieSlider({title, dataSource}) {
 
   return (
     <>
-      <div className='flex h-60'>
-        <div>
+      <div className='flex flex-col h-60 pl-4'>
+        <div className='font-extrabold text-xl pl-4 py-4'>
           <h2>{title}</h2>
         </div>
-        <div className='flex'>
+        <div className='flex h-full overflow-x-auto overflow-y-hidden'>
           {movieList.length > 0 &&
             movieList.map((movie,i) => {
-              console.log("movie",movie);
-              console.log(`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`);
               return (            
                 <MovieCard key={movie.id} data={movie}/>
               )

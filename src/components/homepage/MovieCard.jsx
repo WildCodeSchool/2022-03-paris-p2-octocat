@@ -4,9 +4,9 @@ function MovieCard({data}) {
   return (
 
     <>
-      <div className='rounded-md flex justify-start items-end sm:w-60 bg-no-repeat bg-contain sm:hover:scale-125 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
-        <div className='absolute sm:pl-4'>
-          <div className='card icons flex justify-between items-center w-3/6'>
+      <div className='relative rounded-md overflow-hidden flex justify-start items-end shrink-0 sm:mr-8 sm:w-80 bg-no-repeat bg-contain sm:hover:scale-125 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
+        <div className='absolute w-full h-full pt-20 sm:pl-4'>
+          <div className='card icons flex justify-between items-center w-1/4'>
             <button>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 hover:opacity-90 " viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
