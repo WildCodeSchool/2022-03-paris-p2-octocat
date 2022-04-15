@@ -36,7 +36,7 @@ const Banner = () => {
     
     <> 
       <div className="h-[70vh] mt-10 flex align-center sm:justify-start bg-no-repeat bg-cover bg-center top-0" style={{backgroundImage:`url(${isDesktop ? (posterURLDesktop) : (posterURLMobile)})`}}>
-          <div className="px-8 flex justify-center flex-col sm:px-40 sm:py-30 sm:h-full sm:w-full sm:justify-start sm:align-start sm:flex-col bg-neutral-800/75">
+          <div className="px-8 flex justify-center flex-col sm:px-40 sm:py-30 sm:h-full sm:w-full sm:justify-start sm:align-start sm:flex-col bg-neutral-800/30">
             <h1 className="font-bold text-center pt-20 text-3xl sm:text-7xl sm:text-left sm:w-2/5">
               <span className="block sm:inline">{randomMovie.original_title}</span>
             </h1>
