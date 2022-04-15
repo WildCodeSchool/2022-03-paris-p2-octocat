@@ -1,11 +1,11 @@
 import React from 'react'
 
-function MovieCard() {
+function MovieCard({data}) {
   return (
 
     <>
-      <div className='rounded-md flex justify-start items-end sm:w-60 bg-no-repeat bg-contain ' style={{backgroundImage:`url(https://picsum.photos/240/160)`}}>
-        <div className='absolute  sm:pl-4'>
+      <div className='rounded-md flex justify-start items-end sm:w-60 bg-no-repeat bg-contain sm:hover:scale-125 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
+        <div className='absolute sm:pl-4'>
           <div className='card icons flex justify-between items-center w-3/6'>
             <button>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 hover:opacity-90 " viewBox="0 0 20 20" fill="currentColor">
@@ -18,7 +18,7 @@ function MovieCard() {
               </svg>
             </button>
           </div>
-          <div className='font-bold sm:text-lg'>The Batman</div>
+          <div className='font-bold sm:text-lg'>{data.original_title}</div>
           <div className='font-light sm:text-sm'>Adventure, action, drama</div>
         </div>
       </div>
