@@ -8,6 +8,7 @@ module.exports = {
         Heebo: ["Heebo", "sans-serif"]
     },
   },
-  plugins: [],
+  plugins: [
+  ],
   }
 }

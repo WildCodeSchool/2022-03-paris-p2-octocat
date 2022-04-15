@@ -1,6 +1,8 @@
 import Banner from '../components/homepage/Banner';
 import MovieSlider from '../components/homepage/MovieSlider';
 
+import Navbar from '../components/homepage/Navbar';
+import Footer from '../components/homepage/Footer';
 
 
 const HomePage = () => {
@@ -13,13 +15,15 @@ const HomePage = () => {
 
   return (
     <>
+      <Navbar />
       <Banner />
       <div className='flex flex-col'>
         <MovieSlider title="Trending this week..." dataSource={API_URL_TRENDINGWEEK} />
         <MovieSlider title="Top rated movies" dataSource={API_URL_TOPRATED} />
         <MovieSlider title="Top rated TV shows" dataSource={API_URL_TOPSERIES} />
         <MovieSlider title="Upcoming" dataSource={API_URL_UPCOMING} />
-      </div>
+      </div>     
+      <Footer />
     </>
   )
 }
