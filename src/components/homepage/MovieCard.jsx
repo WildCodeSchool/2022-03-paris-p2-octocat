@@ -1,6 +1,8 @@
 
 
-function MovieCard({data, genres}) {
+function MovieCard({data, moviesGenres}) {
+
+
 
   return (
 
@@ -23,8 +25,9 @@ function MovieCard({data, genres}) {
             {data.original_title ? data.original_title : data.original_name}
           </div>
           <div className='font-light sm:text-sm'>
-          {genres.genres.length > 0 &&
-            genres.genres.map((genre) => { 
+          {
+            // eslint-disable-next-line array-callback-return
+            moviesGenres.genres.map((genre) => { 
               if(data.genre_ids.includes(genre.id)) {
                 return `  ${genre.name}`
               }

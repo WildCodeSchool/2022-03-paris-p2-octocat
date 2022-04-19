@@ -20,31 +20,19 @@ function MovieSlider({title, dataSource}) {
 
   // fetching list of movies genres
 
-  const [genres, setGenres] = useState([]);
-  const getGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
+  const [moviesGenres, setMoviesGenres] = useState([]);
+  const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
 
   useEffect(() => {
-    axios.get(getGenres)
-    .catch(function (error) {
-      if (error.response) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        console.log(error.request);
-      } else {
-        console.log('Error', error.message);
-      }
-      console.log(error.config);
-    })
+    axios.get(urlGenres)
     .then((res) => {
-      return res.json()
+      return res.data;
     })
     .then((data) => {
-      setGenres(data);
+      setMoviesGenres(data);
     })
-
   },[]);
+
 
   return (
     <>
@@ -56,7 +44,7 @@ function MovieSlider({title, dataSource}) {
           {movieList.length > 0 &&
             movieList.map((movie,i) => {
               return (            
-                <MovieCard key={movie.id} data={movie} genres={genres}/>
+                <MovieCard key={movie.id} data={movie} moviesGenres={moviesGenres}/>
               )
             })
           }
