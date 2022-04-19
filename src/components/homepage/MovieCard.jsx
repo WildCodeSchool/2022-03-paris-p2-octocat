@@ -1,9 +1,7 @@
 
 
 function MovieCard({data, moviesGenres}) {
-
-
-
+  
   return (
 
     <>
