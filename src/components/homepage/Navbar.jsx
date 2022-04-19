@@ -13,10 +13,10 @@ const Navbar = () => {
     <div className= 'flex justify-between items-center py-4 px-4' >
         <div className='flex gap-5 items-center'>
             <a href='/'><img className='h-8' src={logo} alt='fakeflix-logo' /> </a>
-            <nav className='flex gap-5 hidden sm:flex' >
+            <nav className='gap-5 hidden sm:flex' >
                 <a href='/' className='nav__link'>Top Movies</a>
                 <a href='/' className='nav__link'>Top Series</a>
-                <a href='/' className='nav__link'>Upcomming</a>
+                <a href='/' className='nav__link'>Upcoming</a>
                 <a href='/' className='nav__link'>Trending</a>
             </nav>
             <button className='flex sm:hidden'>
