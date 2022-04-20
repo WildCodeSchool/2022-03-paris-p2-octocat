@@ -7,9 +7,9 @@ const axios = require('axios');
 function MovieDetails() {
 
   const movieId = useParams();
-  const [movieDetails, setMovieDetails] = useState([]);
+  const [movieDetails, setMovieDetails] = useState({});
   const getDetails = `https://api.themoviedb.org/3/movie/${movieId.id}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
-
+  
 
   useEffect(() => {
     axios.get(getDetails)
@@ -17,27 +17,28 @@ function MovieDetails() {
       return res.data;
     })
     .then((data) => {
-      console.log("data",data)
       setMovieDetails(data);
     })
   },[]);
 
-    console.log(movieDetails)
-  
+  console.log("movieDetails",movieDetails);
+
+  const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
+  const imdbHref = `https://www.imdb.com/title/${movieDetails.imdb_id}`;
 
   return (
     <>
       <Navbar />
         <div className="py-4 sm:pr-12">
-          <div className="relative w-full overflow-hidden text-center sm:w-screen sm:flex sm:justify-center ">
-              <img alt='poster' src='https://picsum.photos/1200/480'></img>
-              <div className="absolute pl-16 inset-1/4 sm:inset-y-1/4 sm:pl-80">
+          <div className="relative object-covertext-center sm:w-screen sm:flex sm:justify-center ">
+              <img alt='poster' className="" src={imgSrc}></img>
+              <button className="absolute pl-16 inset-1/4 sm:inset-y-1/4 sm:pl-80">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 sm:h-40 sm:w-40 opacity-50" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                 </svg>
-              </div>
+              </button>
           </div>
-          <div className="pl-8 py-12 sm:flex sm:items-start sm:justify-between sm:w-full ">
+          <div className="pl-8 py-12 sm:flex sm:items-start sm:justify-evenly sm:gap-40 sm:w-full ">
             <div className="flex flex-col justify-center sm:w-2/4 sm:pl-20">
               <h1 className="font-bold text-left text-3xl pb-2 sm:text-7xl sm:pl-0 ">{movieDetails.original_title}</h1>
               <div className="flex pb-2">
@@ -59,7 +60,7 @@ function MovieDetails() {
               </div>
               <div className="py-4 sm:w-full">{movieDetails.overview}</div>
             </div>
-            <div className="flex flex-col justify-start items-start pr-20 sm:w-2/5">
+            <div className="flex flex-col justify-start items-start sm:justify-start sm:items-start sm:pl-18">
               <div className="rounded-md shadow pb-10">
                 <button
                   className="flex justify-center items-center px-6 py-2 border-2 text-base font-medium rounded-md text-white bg-transparent transition duration-500 ease-in-out w-full sm:hover:scale-125"
@@ -71,6 +72,13 @@ function MovieDetails() {
                 </button>
               </div>
               <div className="flex justify-start items-start pb-10 sm:w-full">
+                {/* {
+                moviesGenres.genres.map((genre) => { 
+                  if(data.genre_ids.includes(genre.id)) {
+                    return `  ${genre.name}`
+                  }
+                  })
+                } */}
                 <button className="bg-stone-700 px-2 py-2 mr-3 opacity-70">Action</button>
                 <button className="bg-stone-700 px-2 py-2 opacity-70">Aventure</button>
               </div>
@@ -78,11 +86,19 @@ function MovieDetails() {
                 <div className="font-semibold">Release date :</div>
                 <div>{movieDetails.release_date}</div>
                 <div className="font-semibold">Country :</div>
-                <div>United Kingdom, United States of America</div>
+                <div>
+                  {/* {movieDetails.production_countries.length > 0 && (
+                    movieDetails.production_countries.map((country) => 
+                      country.name
+                    )
+                  )} */}
+                </div>
                 <div className="font-semibold">Original language :</div>
-                <div>EN FR</div>
+                <div>{movieDetails.original_language}</div>
                 <button className="font-semibold flex justify-start">
-                  <span className="bg-amber-400 w-12 h-6 text-neutral-900 font-black">IMDB</span>
+                  <span className="bg-amber-400 w-12 h-6 text-neutral-900 font-black">
+                  <a href={imdbHref}>IMDB</a>
+                  </span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 pl-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
                   </svg>
