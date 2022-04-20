@@ -1,7 +1,30 @@
 import Navbar from "../components/homepage/Navbar";
 import Footer from "../components/homepage/Footer";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+const axios = require('axios');
 
 function MovieDetails() {
+
+  const movieId = useParams();
+  const [movieDetails, setMovieDetails] = useState([]);
+  const getDetails = `https://api.themoviedb.org/3/movie/${movieId.id}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
+
+
+  useEffect(() => {
+    axios.get(getDetails)
+    .then((res) => {
+      return res.data;
+    })
+    .then((data) => {
+      console.log("data",data)
+      setMovieDetails(data);
+    })
+  },[]);
+
+    console.log(movieDetails)
+  
+
   return (
     <>
       <Navbar />
@@ -16,7 +39,7 @@ function MovieDetails() {
           </div>
           <div className="pl-8 py-12 sm:flex sm:items-start sm:justify-between sm:w-full ">
             <div className="flex flex-col justify-center sm:w-2/4 sm:pl-20">
-              <h1 className="font-bold text-left text-3xl pb-2 sm:text-7xl sm:pl-0 ">Movie title</h1>
+              <h1 className="font-bold text-left text-3xl pb-2 sm:text-7xl sm:pl-0 ">{movieDetails.original_title}</h1>
               <div className="flex pb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
@@ -34,7 +57,7 @@ function MovieDetails() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                 </svg>
               </div>
-              <div className="py-4 sm:w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</div>
+              <div className="py-4 sm:w-full">{movieDetails.overview}</div>
             </div>
             <div className="flex flex-col justify-start items-start pr-20 sm:w-2/5">
               <div className="rounded-md shadow pb-10">
@@ -53,7 +76,7 @@ function MovieDetails() {
               </div>
               <div className="grid gap-2 grid-cols-2 grid-rows-4">
                 <div className="font-semibold">Release date :</div>
-                <div>15-07-2010</div>
+                <div>{movieDetails.release_date}</div>
                 <div className="font-semibold">Country :</div>
                 <div>United Kingdom, United States of America</div>
                 <div className="font-semibold">Original language :</div>

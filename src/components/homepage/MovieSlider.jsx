@@ -17,8 +17,6 @@ function MovieSlider({title, dataSource}) {
     })
   },[]);
 
-  console.log("movielist", movieList)
-
 
   return (
     <>
