@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function MovieCard({data}) {
 
@@ -9,7 +10,15 @@ function MovieCard({data}) {
     e.preventDefault();
     navigate(`/movie/${movieId}`);
   }
-  
+
+  const [isTv, setIsTv] = useState(false);
+  useEffect(() => {
+    const checkType = () => {
+      return Object.getOwnPropertyNames(data).includes("first_air_date") ? setIsTv(true) : setIsTv(false);
+    }
+    checkType();
+  },[]);
+
   return (
 
     <>

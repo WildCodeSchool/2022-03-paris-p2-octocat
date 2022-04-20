@@ -9,9 +9,9 @@ function MovieDetails() {
   const movieId = useParams();
   const [movieDetails, setMovieDetails] = useState({});
   const getDetails = `https://api.themoviedb.org/3/movie/${movieId.id}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
+  const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
+  const imdbHref = `https://www.imdb.com/title/${movieDetails.imdb_id}`;
   
-  
-
   useEffect(() => {
     axios.get(getDetails)
     .then((res) => {
@@ -23,9 +23,6 @@ function MovieDetails() {
   },[]);
 
   console.log("movieDetails",movieDetails);
-
-  const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
-  const imdbHref = `https://www.imdb.com/title/${movieDetails.imdb_id}`;
 
   return (
     <>
