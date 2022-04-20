@@ -19,7 +19,7 @@ const Navbar = () => {
                         <span className='block w-5 h-0.5 bg-slate-50'></span>
                     </div>
             </button>
-            <div onClick={handleClick} className={toggleMenu ? 'sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 duration-500 ' : 'absolute left-[-100%]'}>
+            <div onClick={handleClick} className={toggleMenu ? 'sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 duration-500' : 'absolute left-[-100%]'}>
                 <ul>
                     <li className='py-4'>Top MoviesTop</li>
                     <li className='py-4'>Top Series</li>
