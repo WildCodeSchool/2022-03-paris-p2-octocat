@@ -10,6 +10,7 @@ function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const getDetails = `https://api.themoviedb.org/3/movie/${movieId.id}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
   
+  
 
   useEffect(() => {
     axios.get(getDetails)

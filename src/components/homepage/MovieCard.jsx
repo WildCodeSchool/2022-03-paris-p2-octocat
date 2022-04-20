@@ -10,8 +10,6 @@ function MovieCard({data}) {
     navigate(`/movie/${movieId}`);
   }
   
-
-
   return (
 
     <>
