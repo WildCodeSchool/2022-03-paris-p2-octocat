@@ -4,6 +4,21 @@ const axios = require('axios');
 
 function MovieSlider({title, dataSource}) {
 
+    // fetching list of movies genres
+
+    const [moviesGenres, setMoviesGenres] = useState([]);
+    const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
+  
+    useEffect(() => {
+      axios.get(urlGenres)
+      .then((res) => {
+        return res.data;
+      })
+      .then((data) => {
+        setMoviesGenres(data);
+      })
+    },[]);
+
   // fetching all data from lists based on URLs defined in HomePage
 
   const [movieList, setMovieList] = useState([]);
@@ -18,20 +33,7 @@ function MovieSlider({title, dataSource}) {
     })
   },[]);
 
-  // fetching list of movies genres
 
-  const [moviesGenres, setMoviesGenres] = useState([]);
-  const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
-
-  useEffect(() => {
-    axios.get(urlGenres)
-    .then((res) => {
-      return res.data;
-    })
-    .then((data) => {
-      setMoviesGenres(data);
-    })
-  },[]);
 
 
   return (
