@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import MovieCard from './MovieCard';
+import SearchGridCard from './SearchGridCard';
 const axios = require('axios');
 
 function SearchGrid({title, dataSource}) {
@@ -26,7 +26,7 @@ function SearchGrid({title, dataSource}) {
               {movieList.length > 0 &&
                 movieList.map((movie,i) => {
                   return (            
-                    <MovieCard key={movie.id} data={movie}/>
+                    <SearchGridCard key={movie.id} data={movie}/>
                   )
                 })
               }
