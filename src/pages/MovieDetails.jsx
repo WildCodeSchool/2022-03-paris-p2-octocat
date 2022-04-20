@@ -5,18 +5,18 @@ function MovieDetails() {
   return (
     <>
       <Navbar />
-        <div className="h-screen py-4 sm:pr-12">
+        <div className="py-4 sm:pr-12">
           <div className="relative w-full overflow-hidden text-center sm:w-screen sm:flex sm:justify-center ">
               <img alt='poster' src='https://picsum.photos/1200/480'></img>
-              <div className="absolute inset-y-1/4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-40 w-40 opacity-50" viewBox="0 0 20 20" fill="currentColor">
+              <div className="absolute pl-16 inset-1/4 sm:inset-y-1/4 sm:pl-80">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 sm:h-40 sm:w-40 opacity-50" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                 </svg>
               </div>
           </div>
-          <div className="sm:flex sm:items-start sm:justify-between sm:w-full pl-8 py-12">
-            <div className="flex flex-col justify-center sm:w-2/4 pl-20">
-              <h1 className="font-bold text-center text-3xl pb-2 sm:text-7xl sm:text-left">Movie title</h1>
+          <div className="pl-8 py-12 sm:flex sm:items-start sm:justify-between sm:w-full ">
+            <div className="flex flex-col justify-center sm:w-2/4 sm:pl-20">
+              <h1 className="font-bold text-left text-3xl pb-2 sm:text-7xl sm:pl-0 ">Movie title</h1>
               <div className="flex pb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
