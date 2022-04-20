@@ -4,7 +4,7 @@ function MovieCard({data}) {
   return (
 
     <>
-      <div className='relative rounded-md overflow-hidden flex justify-start items-end shrink-0 sm:mr-8 sm:w-80 bg-no-repeat bg-contain sm:hover:scale-125 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
+      <div className='relative rounded-md overflow-hidden flex justify-start items-end shrink-0 sm:mr-8 sm:w-80 bg-no-repeat bg-cover sm:hover:scale-125 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
         <div className='absolute w-full h-full pt-20 sm:pl-4'>
           <div className='card icons flex justify-between items-center w-1/4'>
             <button>
