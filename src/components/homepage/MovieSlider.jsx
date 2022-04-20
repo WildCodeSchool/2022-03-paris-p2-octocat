@@ -32,8 +32,6 @@ function MovieSlider({title, dataSource}) {
               )
             })
           }
-
-
         </div>
       </div>
     </>

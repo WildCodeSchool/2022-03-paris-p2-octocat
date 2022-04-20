@@ -4,12 +4,7 @@ import { useEffect, useState } from "react";
 function MovieCard({data}) {
 
   const navigate = useNavigate();
-  const movieId = data.id;
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    navigate(`/movie/${movieId}`);
-  }
+  const mediaId = data.id;
 
   const [isTv, setIsTv] = useState(false);
   useEffect(() => {
@@ -18,6 +13,15 @@ function MovieCard({data}) {
     }
     checkType();
   },[]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (isTv) {
+      navigate(`/tv/${mediaId}`);
+    } else {
+      navigate(`/movie/${mediaId}`);
+    }
+  };
 
   return (
 
