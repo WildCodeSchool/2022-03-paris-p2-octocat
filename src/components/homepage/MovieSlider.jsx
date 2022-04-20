@@ -33,9 +33,6 @@ function MovieSlider({title, dataSource}) {
     })
   },[]);
 
-
-
-
   return (
     <>
       <div className='flex flex-col h-60 pl-4'>
@@ -53,7 +50,6 @@ function MovieSlider({title, dataSource}) {
         </div>
       </div>
     </>
-
   )
 }
 
