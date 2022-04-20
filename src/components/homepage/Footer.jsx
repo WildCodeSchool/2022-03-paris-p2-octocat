@@ -2,7 +2,6 @@
 
 function Footer() {
   return (
-
     <footer className="fixed bottom-0 left-0 w-full">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <a href="_self" className="flex title-font font-bold items-center md:justify-start justify-center text-red-600">
