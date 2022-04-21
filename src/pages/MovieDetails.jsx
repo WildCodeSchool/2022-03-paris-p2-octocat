@@ -10,6 +10,7 @@ function MovieDetails() {
   const locationPath = location.state;
   const [movieDetails, setMovieDetails] = useState({});
   const [movieCountries, setMovieCountries] = useState([]);
+  const [movieGenres, setMovieGenres] = useState([]);
   const getDetails = `https://api.themoviedb.org/3/movie/${locationPath}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
   const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
   const imdbHref = `https://www.imdb.com/title/${movieDetails.imdb_id}`;
@@ -34,13 +35,15 @@ function MovieDetails() {
     })
   },[locationPath]);
 
-  // {
-  //   moviesGenres.genres.map((genre) => { 
-  //     if(data.genre_ids.includes(genre.id)) {
-  //       return `  ${genre.name}`
-  //     }
-  //     })
-  // }
+  useEffect(() => {
+    axios.get(getDetails)
+    .then((res) => {
+      return res.data;
+    })
+    .then((data) => {
+    setMovieGenres(data.genres);
+    })
+  },[locationPath]);
 
   return (
     <>
@@ -55,29 +58,30 @@ function MovieDetails() {
               </button>
           </div>
         </div>
-        <div className="pl-8 py-12 sm:flex sm:pl-0 sm:items-start sm:justify-evenly sm:gap-40 sm:w-full ">
+        <div className="pl-3 py-12 sm:flex sm:pl-0 sm:items-start sm:justify-evenly sm:gap-40 sm:w-full ">
           <div className="flex flex-col justify-center sm:w-2/4 sm:pl-20">
-            <h1 className="font-bold text-left text-3xl pb-2 sm:text-7xl sm:pl-0 ">{ movieDetails.original_title ? movieDetails.original_title : movieDetails.name }</h1>
+            <h1 className="font-bold text-left text-3xl pb-4 sm:text-7xl sm:pl-0 ">{ movieDetails.original_title ? movieDetails.original_title : movieDetails.name }</h1>
+            <h2 className="font-medium text-left text-lg pb-2 sm:text-4xl sm:pl-0 ">{ movieDetails.tagline }</h2>
             <div className="flex pb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill={ movieDetails.vote_average > 2 ? "orange" : "none"} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill={ movieDetails.vote_average > 4 ? "orange" : "none"} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill={ movieDetails.vote_average > 6 ? "orange" : "none"} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill={ movieDetails.vote_average > 8 ? "orange" : "none"} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill={ movieDetails.vote_average > 9 ? "orange" : "none"} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
               </svg>
             </div>
             <div className="py-4 sm:w-full">{movieDetails.overview}</div>
           </div>
-          <div className="flex flex-col justify-start items-start sm:justify-start sm:w-[20vw] sm:items-start sm:pl-18">
+          <div className="flex flex-col justify-start items-start sm:justify-start sm:w-[30vw] sm:items-start sm:pr-10 sm:pl-18">
             <div className="rounded-md shadow pb-10">
               <button
                 className="flex justify-center items-center px-6 py-2 border-2 text-base font-medium rounded-md text-white bg-transparent transition duration-500 ease-in-out w-full sm:hover:scale-125 sm:hover:bg-slate-800"
@@ -89,9 +93,13 @@ function MovieDetails() {
               </button>
             </div>
             <div className="flex justify-start items-start pb-10 sm:w-full">
-
-              <button className="bg-stone-700 px-2 py-2 mr-3 opacity-70">Action</button>
-              <button className="bg-stone-700 px-2 py-2 opacity-70">Aventure</button>
+              {
+                  movieGenres.length > 0 && (
+                  movieGenres.map((genre) => 
+                  <button className="bg-stone-700 px-2 py-2 mr-3 opacity-70">{genre.name}</button>
+                  )
+                ) 
+              }
             </div>
             <div className="grid grid-cols-2 gap-4 sm:w-full">
                 <div className="font-semibold">
