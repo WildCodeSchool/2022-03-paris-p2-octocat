@@ -2,6 +2,7 @@ import SearchBar from "./SearchBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import SearchGridbyInput from "./SearchGridbyInput";
 
 const SearchResult = () => {
     const [movies, setMovies] = useState([]);
@@ -14,9 +15,7 @@ const SearchResult = () => {
 
     useEffect(() => {
         axios
-            .get(
-                `https://api.themoviedb.org/3/search/movie?api_key=0fb4d196071831889c6fc454d80e18b1&query=${search}`
-            )
+            .get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}`)
             .then((res) => res.data.results)
             .then((data) => setMovies(data));
     }, [search]);
@@ -27,10 +26,11 @@ const SearchResult = () => {
                 {movies === null && <p>Please fill in research input</p>}
             </div> */}
             <div>
-                {movies && movies.map((result) => (
+                {/* {movies && movies.map((result) => (
                         <li className="text-white">{result.title}</li>
-                    ))}
-                <p className="text-white">coucou</p>
+                    ))} */}
+                <SearchGridbyInput title={movies}
+                dataSource={`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}`}/>
             </div>
         </>
     );
