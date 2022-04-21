@@ -4,13 +4,13 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 const axios = require('axios');
 
-function MovieDetails() {
+function TvDetails() {
 
   const location = useLocation();
   const locationPath = location.state;
   const [movieDetails, setMovieDetails] = useState({});
   const [movieCountries, setMovieCountries] = useState([]);
-  const getDetails = `https://api.themoviedb.org/3/movie/${locationPath}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
+  const getDetails = `https://api.themoviedb.org/3/tv/${locationPath}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
   const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
   const imdbHref = `https://www.imdb.com/title/${movieDetails.imdb_id}`;
 
@@ -89,9 +89,13 @@ function MovieDetails() {
               </button>
             </div>
             <div className="flex justify-start items-start pb-10 sm:w-full">
-
-              <button className="bg-stone-700 px-2 py-2 mr-3 opacity-70">Action</button>
-              <button className="bg-stone-700 px-2 py-2 opacity-70">Aventure</button>
+              {
+                  movieDetails.genres.length > 0 && (
+                  movieCountries.map((genre) => 
+                  <button className="bg-stone-700 px-2 py-2 mr-3 opacity-70">{genre.name}</button>
+                  )
+                ) 
+              }
             </div>
             <div className="grid grid-cols-2 gap-4 sm:w-full">
                 <div className="font-semibold">
@@ -107,7 +111,6 @@ function MovieDetails() {
                 }
                 </div>        
                 <div className="font-semibold">Country :</div>
-                <div>
                 <ul className="flex flex-col">
                   {
                       movieCountries.length > 0 && (
@@ -117,7 +120,6 @@ function MovieDetails() {
                     ) 
                   }
                 </ul>
-                </div>
                 <div className="font-semibold">Original language :</div>
                 <div>{movieDetails.original_language}</div>
                 <button className="font-semibold flex justify-start">
@@ -138,4 +140,4 @@ function MovieDetails() {
   )
 }
 
-export default MovieDetails
+export default TvDetails

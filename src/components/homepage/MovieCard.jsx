@@ -17,9 +17,9 @@ function MovieCard({data}) {
   const handleClick = (e) => {
     e.preventDefault();
     if (isTv) {
-      navigate(`/tv/${mediaId}`);
+      navigate(`/tv/${mediaId}`, {state: mediaId});
     } else {
-      navigate(`/movie/${mediaId}`);
+      navigate(`/movie/${mediaId}`, {state: mediaId});
     }
   };
 
