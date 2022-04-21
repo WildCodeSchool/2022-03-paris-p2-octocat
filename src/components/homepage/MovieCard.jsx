@@ -1,9 +1,31 @@
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function MovieCard({data, moviesGenres}) {
+
+  const navigate = useNavigate();
+  const mediaId = data.id;
+
+  const [isTv, setIsTv] = useState(false);
+  useEffect(() => {
+    const checkType = () => {
+      return Object.getOwnPropertyNames(data).includes("first_air_date") ? setIsTv(true) : setIsTv(false);
+    }
+    checkType();
+  },[data]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (isTv) {
+      navigate(`/tv/${mediaId}`, {state: mediaId});
+    } else {
+      navigate(`/movie/${mediaId}`, {state: mediaId});
+    }
+  };
   
   return (
     <>
-      <div className='z-10 relative rounded-md overflow-hidden flex justify-start items-end shrink-0 mr-8 w-80 h-40 bg-no-repeat bg-cover sm:hover:scale-110 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
+      <div onClick={handleClick} className='cursor-pointer z-10 relative rounded-md overflow-hidden flex justify-start items-end shrink-0 mr-8 w-80 h-40 bg-no-repeat bg-cover sm:hover:scale-110 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
         <div className='absolute w-full h-full pt-12 pl-4'>
           <div className='card icons flex justify-between items-center w-1/4'>
             <button>
