@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
-
-const axios = require('axios');
-
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function SearchGrid({title, dataSource}) {
+
+  let param = useParams();
+  const API_URL_GENRE= `https://api.themoviedb.org/3/discover/movie?api_key=f0cf6cd5405edeea985fed5132d6e858&with_genres=${param.id}`;
 
       // fetching list of movies genres
 
@@ -26,20 +28,26 @@ function SearchGrid({title, dataSource}) {
       const [movieList, setMovieList] = useState([]);
 
       useEffect(() => {
-        axios.get(dataSource)
+        axios.get(API_URL_GENRE)
         .then((res) => {
           return res.data;
         })
         .then((data) => {
           setMovieList(data.results);
         })
-      },[]);
+      },[param.id]);
 
   return (
     <>
       <div className='h-full pl-4'>
-        <div className='font-extrabold text-xl pl-4 py-4'>
-          <h2>{title}</h2>
+        <div className='font-extrabold text-xl pl-4 py-4 Slate'>
+
+        {
+          moviesGenres.length > 0 && (
+          moviesGenres.map((genre) => 
+          <h2 className='font-extrabold text-xl text-white'>{genre.name}</h2>
+          ))}
+
         </div>
             <div className='flex flex-wrap h-full gap-y-8 mt-2.5 justify-center'>
               {movieList.length > 0 &&
