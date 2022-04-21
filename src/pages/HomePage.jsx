@@ -1,6 +1,5 @@
 import Banner from '../components/homepage/Banner';
 import MovieSlider from '../components/homepage/MovieSlider';
-
 import Navbar from '../components/homepage/Navbar';
 import Footer from '../components/homepage/Footer';
 
