@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function MovieCard({data}) {
+function MovieCard({data, moviesGenres}) {
 
   const navigate = useNavigate();
   const mediaId = data.id;
@@ -22,11 +22,10 @@ function MovieCard({data}) {
       navigate(`/movie/${mediaId}`, {state: mediaId});
     }
   };
-
+  
   return (
-
     <>
-      <div onClick={handleClick} className='relative rounded-md overflow-hidden flex justify-start items-end shrink-0 sm:cursor-pointer sm:mr-8 sm:w-80 bg-no-repeat bg-contain sm:hover:scale-125 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
+      <div onClick={handleClick} className='z-10 relative rounded-md overflow-hidden flex justify-start items-end shrink-0 mr-8 w-80 h-40 bg-no-repeat bg-cover sm:hover:scale-110 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
         <div className='absolute w-full h-full pt-20 sm:pl-4'>
           <div className='card icons flex justify-between items-center w-1/4'>
             <button>
@@ -40,11 +39,24 @@ function MovieCard({data}) {
               </svg>
             </button>
           </div>
-          <div className='font-bold sm:text-lg'>{data.original_title}</div>
-          <div className='font-light sm:text-sm'>Adventure, action, drama</div>
+          <div className='font-bold sm:text-lg'>
+            {data.original_title ? data.original_title : data.original_name}
+          </div>
+          <div className='font-light sm:text-sm'>
+          {
+            // eslint-disable-next-line array-callback-return
+            moviesGenres.genres.map((genre) => { 
+              if(data.genre_ids.includes(genre.id)) {
+                return `  ${genre.name}`
+              }
+            })
+          }
+          </div>
         </div>
       </div>
     </>
+
+
     
   )
 }
