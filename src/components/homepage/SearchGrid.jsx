@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
+
 const axios = require('axios');
+
 
 function SearchGrid({title, dataSource}) {
 
@@ -21,21 +23,21 @@ function SearchGrid({title, dataSource}) {
   
     // fetching all data from lists based on URLs defined in HomePage
 
-  const [movieList, setMovieList] = useState([]);
+      const [movieList, setMovieList] = useState([]);
 
-  useEffect(() => {
-    axios.get(dataSource)
-    .then((res) => {
-      return res.data;
-    })
-    .then((data) => {
-      setMovieList(data.results);
-    })
-  },[]);
+      useEffect(() => {
+        axios.get(dataSource)
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => {
+          setMovieList(data.results);
+        })
+      },[]);
 
   return (
     <>
-      <div className='h-screen pl-4'>
+      <div className='h-full pl-4'>
         <div className='font-extrabold text-xl pl-4 py-4'>
           <h2>{title}</h2>
         </div>

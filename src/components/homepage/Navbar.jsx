@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../assets/images/logo-fakeflix.svg'
 import {useState} from 'react'
+import {Link} from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -8,7 +9,7 @@ const Navbar = () => {
     const handleClick = () => {
         setToggleMenu(!toggleMenu)
     };
-
+    
   return (
     <div className='flex justify-between items-center py-4 px-4'>
         <div className='flex gap-5 items-center'>
@@ -19,13 +20,16 @@ const Navbar = () => {
                         <span className='block w-5 h-0.5 bg-slate-50'></span>
                     </div>
             </button>
-            <div onClick={handleClick} className={toggleMenu ? 'sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 duration-500' : 'absolute left-[-100%]'}>
-                <ul>
-                    <li className='py-4'>Top MoviesTop</li>
-                    <li className='py-4'>Top Series</li>
-                    <li className='py-4'>Upcomming</li>
-                    <li className='py-4'>Trending</li>
-                </ul>
+            <div onClick={handleClick} className={toggleMenu ? 'z-50 sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 duration-500' : 'absolute left-[-100%]'}>
+                <nav className='flex flex-col px-4 justify-center'>
+                    <Link to='/searchpage' className='py-4'>Action</Link>
+                    <Link to='/searchpage' className='py-4'>Adventure</Link>
+                    <Link to='/searchpage' className='py-4'>Animation</Link>
+                    <Link to='/searchpage' className='py-4'>Comedy</Link>
+                    <Link to='/searchpage' className='py-4'>Fantasy</Link>
+                    <Link to='/searchpage' className='py-4'>Horor</Link>
+                    <Link to='/searchpage' className='py-4'>Thriller</Link>
+                </nav>
             </div>
             <a href='/'><img className='h-8' src={logo} alt='fakeflix-logo'/> </a>
             <nav className='gap-5 hidden sm:flex'>
