@@ -4,6 +4,8 @@ import SearchPage from './pages/SearchPage';
 import { Routes, Route } from 'react-router-dom';
 import SearchPagebyInput from './pages/SearchPageByInput';
 import SearchResult from './components/homepage/SearchResult';
+import MovieDetails from './pages/MovieDetails';
+import TvDetails from './pages/TvDetails';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/input-search-result' element={<SearchPagebyInput />} />
         <Route path='/search-result' element={<SearchResult />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
+        <Route path="/tv/:id" element={<TvDetails />} />
         <Route path='/searchpage' element={<SearchPage />} />
       </Routes>
     </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 const axios = require('axios');
 
 const Banner = () => {
@@ -58,7 +59,7 @@ const Banner = () => {
                   <button
                     className="flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-slate-500 transition duration-600 ease-in-out w-full  hover:bg-slate-600"
                   >
-                    More info
+                    <Link to='/movie/:id'>More info</Link>
                   </button>
                 </div>
               </div>
