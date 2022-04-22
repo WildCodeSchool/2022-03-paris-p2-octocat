@@ -12,7 +12,7 @@ function SearchGrid({title, dataSource}) {
   useEffect(() => {
     axios.get(urlGenres)
     .then((res) => {
-      return res.data.genres;
+      return res.data;
     })
     .then((data) => {
       setMoviesGenres(data);
@@ -26,10 +26,10 @@ function SearchGrid({title, dataSource}) {
   useEffect(() => {
     axios.get(dataSource)
     .then((res) => {
-      return res.data.results;
+      return res.data;
     })
     .then((data) => {
-      setMovieList(data);
+      setMovieList(data.results);
     })
   },[]);
 
