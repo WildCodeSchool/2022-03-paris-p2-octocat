@@ -16,12 +16,6 @@ const SearchBar = () => {
   const handleNavigate = () => {
     navigate("/search-result",{state: {searchQuery}});
   }
-  //  useEffect( () => {
-  //   axios
-  //     .get(`https://api.themoviedb.org/3/movie?api_key=0fb4d196071831889c6fc454d80e18b1&q=${searchQuery}`)
-  //     .then (res => res.data.results)
-  //     .then (data => setSearchResults(data))
-  //  }, [searchQuery]);
 
   return (
     <div className="flex items-center text-black" id="search-bar">
