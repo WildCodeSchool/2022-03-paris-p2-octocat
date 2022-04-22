@@ -5,7 +5,7 @@ const axios = require('axios');
 const Banner = () => {
 
   const [randomMovie, setRandomMovie] = useState([]);
-  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}`;
+  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`;
 
 
   useEffect(() => {
