@@ -4,20 +4,20 @@ const axios = require('axios');
 
 function SearchGrid({title, dataSource}) {
 
-      // fetching list of movies genres
+  // fetching list of movies genres
 
-      const [moviesGenres, setMoviesGenres] = useState([]);
-      const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
-    
-      useEffect(() => {
-        axios.get(urlGenres)
-        .then((res) => {
-          return res.data;
-        })
-        .then((data) => {
-          setMoviesGenres(data);
-        })
-      },[]);
+  const [moviesGenres, setMoviesGenres] = useState([]);
+  const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
+
+  useEffect(() => {
+    axios.get(urlGenres)
+    .then((res) => {
+      return res.data.genres;
+    })
+    .then((data) => {
+      setMoviesGenres(data);
+    })
+  },[]);
   
     // fetching all data from lists based on URLs defined in HomePage
 
@@ -26,10 +26,10 @@ function SearchGrid({title, dataSource}) {
   useEffect(() => {
     axios.get(dataSource)
     .then((res) => {
-      return res.data;
+      return res.data.results;
     })
     .then((data) => {
-      setMovieList(data.results);
+      setMovieList(data);
     })
   },[]);
 

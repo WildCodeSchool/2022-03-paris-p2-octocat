@@ -23,8 +23,6 @@ const SearchBar = () => {
   //     .then (data => setSearchResults(data))
   //  }, [searchQuery]);
 
-  console.log(searchQuery);
-
   return (
     <div className="flex items-center text-black" id="search-bar">
       <div id="search-bar-container" className="flex items-center gap-4">
