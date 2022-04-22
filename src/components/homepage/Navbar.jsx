@@ -1,13 +1,9 @@
 import React from 'react'
 import logo from '../../assets/images/logo-fakeflix.svg'
-<<<<<<< HEAD
-import {useState} from 'react'
 import SearchBar from './SearchBar';
-=======
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
->>>>>>> dev
 
 const Navbar = () => {
 
