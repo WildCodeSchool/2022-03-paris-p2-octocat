@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const axios = require('axios');
 
 const Banner = () => {
 
+  const navigate = useNavigate();
   const [randomMovie, setRandomMovie] = useState([]);
   const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`;
 
@@ -31,6 +32,12 @@ const Banner = () => {
 
   const posterURLDesktop = `https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`;
   const posterURLMobile = `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`;
+  const movieId = randomMovie.id;
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate(`/movie/${movieId}`, {state: movieId});
+  };
 
   return (
     
@@ -57,6 +64,7 @@ const Banner = () => {
                 </div>
                 <div className="rounded-md shadow">
                   <button
+                    onClick={handleClick}
                     className="flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-slate-500 transition duration-600 ease-in-out w-full  hover:bg-slate-600"
                   >
                     <Link to='/movie/:id'>More info</Link>
