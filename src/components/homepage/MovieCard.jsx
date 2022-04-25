@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function MovieCard({data, moviesGenres}) {
-
+  
   const navigate = useNavigate();
   const mediaId = data.id;
 

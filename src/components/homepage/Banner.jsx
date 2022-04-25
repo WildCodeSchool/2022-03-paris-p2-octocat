@@ -32,7 +32,6 @@ const Banner = () => {
   const posterURLDesktop = `https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`;
   const posterURLMobile = `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`;
 
-
   return (
     
     <> 
