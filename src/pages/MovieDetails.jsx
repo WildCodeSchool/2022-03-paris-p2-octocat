@@ -1,6 +1,6 @@
 import Navbar from "../components/homepage/Navbar";
 import Footer from "../components/homepage/Footer";
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 const axios = require('axios');
 
@@ -8,6 +8,7 @@ function MovieDetails() {
 
   const location = useLocation();
   const locationPath = location.state;
+  const navigate = useNavigate()
   const [movieDetails, setMovieDetails] = useState({});
   const [movieCountries, setMovieCountries] = useState([]);
   const [movieGenres, setMovieGenres] = useState([]);
@@ -78,7 +79,10 @@ function MovieDetails() {
               {
                   movieGenres.length > 0 && (
                   movieGenres.map((genre) => 
-                  <button className="bg-stone-700 px-2 py-2 mr-3 opacity-70">{genre.name}</button>
+                  <button 
+                  onClick={() => {navigate(`/searchpage/${genre.id}`);}}
+                  className="bg-stone-700 px-2 py-2 mr-3 opacity-70">{genre.name}
+                  </button>
                   )
                 ) 
               }
