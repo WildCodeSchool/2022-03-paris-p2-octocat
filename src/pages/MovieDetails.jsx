@@ -22,28 +22,10 @@ function MovieDetails() {
     })
     .then((data) => {
       setMovieDetails(data);
+      setMovieCountries(data.production_countries);
+      setMovieGenres(data.genres);
     })
-  },[locationPath]);
-
-  useEffect(() => {
-    axios.get(getDetails)
-    .then((res) => {
-      return res.data;
-    })
-    .then((data) => {
-    setMovieCountries(data.production_countries);
-    })
-  },[locationPath]);
-
-  useEffect(() => {
-    axios.get(getDetails)
-    .then((res) => {
-      return res.data;
-    })
-    .then((data) => {
-    setMovieGenres(data.genres);
-    })
-  },[locationPath]);
+  },[getDetails]);
 
   return (
     <>

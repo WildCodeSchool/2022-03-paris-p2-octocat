@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
 
+
 function App() {
   return (
     <div className="App text-white font-Heebo bg-black">
