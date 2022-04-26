@@ -13,6 +13,7 @@ function MovieDetails() {
   const [movieCountries, setMovieCountries] = useState([]);
   const [movieGenres, setMovieGenres] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [favorites, setFavorites] = useState([]);
   const getDetails = `https://api.themoviedb.org/3/movie/${locationPath}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
   const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
   const imdbHref = `https://www.imdb.com/title/${movieDetails.imdb_id}`;
@@ -31,16 +32,15 @@ function MovieDetails() {
 
   // toggle favorite button color
   const toggleButton = (e) => {
-    console.log(e)
+    setFavorites([{"id": 24345}]);
+    console.log('favorites',favorites)
+    localStorage.setItem('favorites', JSON.stringify(favorites));
     setIsFavorite(!isFavorite);
   }
-  
-  
 
-    // bg-yellow-500
-    // fill="none"
-    // text-white
-
+  // add movie to local storage (use stringify to convert from js object to json)
+  // localStorage.setItem('favorites', JSON.stringify(favorites));
+  // 
 
   return (
     <>
@@ -83,7 +83,7 @@ function MovieDetails() {
               <button
                 onClick={toggleButton}
                 style={{backgroundColor: isFavorite ? '#EAB308' : 'transparent', color: isFavorite ? 'black' : 'white'}}
-                className="flex justify-center items-center px-6 py-2 border-2 text-base font-medium rounded-md bg-transparent transition duration-500 ease-in-out w-full sm:hover:scale-125"
+                className="flex justify-center items-center px-6 py-2 border-2 text-base font-bold rounded-md bg-transparent transition duration-500 ease-in-out w-full sm:hover:scale-125"
               >
               <p className="pr-2">Favorite</p>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 hover:opacity-75" fill="white" viewBox="0 0 24 24" stroke="none" strokeWidth={2}>
