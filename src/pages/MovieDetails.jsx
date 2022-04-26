@@ -32,7 +32,7 @@ function MovieDetails() {
 
   // toggle favorite button color
   const toggleButton = (e) => {
-    setFavorites([{"id": 24345}]);
+    setFavorites([{"id": 406759}]);
     console.log('favorites',favorites)
     localStorage.setItem('favorites', JSON.stringify(favorites));
     setIsFavorite(!isFavorite);
