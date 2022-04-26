@@ -4,11 +4,13 @@ const axios = require('axios');
 
 function MovieSlider({title, dataSource}) {
 
-    // fetching list of movies genres
-
     const [moviesGenres, setMoviesGenres] = useState([]);
+    const [movieList, setMovieList] = useState([]);
     const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
   
+
+  // fetching movies genres
+
     useEffect(() => {
       axios.get(urlGenres)
       .then((res) => {
@@ -20,8 +22,6 @@ function MovieSlider({title, dataSource}) {
     },[]);
 
   // fetching all data from lists based on URLs defined in HomePage
-
-  const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
     axios.get(dataSource)
