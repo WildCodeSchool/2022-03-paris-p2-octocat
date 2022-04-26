@@ -21,7 +21,7 @@ const SearchBar = () => {
       <div id="search-bar-container" className="flex items-center gap-4">
         <div id="search-bar-input">
           <input id= "research-text-field" className="flex rounded-lg py-1 px-2 border-transparent" 
-            type="text" placeholder="Enter a movie title..."
+            type="submit" placeholder="Enter a movie title..."
             value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
         </div>
         <div id="search-bar-button" className="flex justify-center items-center">
