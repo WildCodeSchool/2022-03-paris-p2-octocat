@@ -6,6 +6,7 @@ import SearchPagebyInput from './pages/SearchPageByInput';
 import SearchResult from './components/homepage/SearchResult';
 import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
+import FavoritesPage from './pages/FavoritesPage';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/tv/:id" element={<TvDetails />} />
         <Route path='/searchpage/:id' element={<SearchPage />} />
+        <Route path='/favorites' element={<FavoritesPage />} />
       </Routes>
     </div>
   );

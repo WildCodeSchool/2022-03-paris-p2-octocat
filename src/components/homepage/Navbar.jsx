@@ -51,7 +51,8 @@ const Navbar = () => {
                 <Link to='/searchpage/14' className='py-4'>Fantasy</Link>
             </nav>
         </div>
-        <div className='flex gap-3 items-center'>
+        <div className='flex gap-4 items-center'>
+            <Link to='/favorites' className='font-bold hover:text-red-600'>My favorites</Link>
             <SearchBar />
             <button className='rounded-lg py-1 px-2 border-transparent bg-red-600 hover:bg-red-800'>Login</button>
         </div>
