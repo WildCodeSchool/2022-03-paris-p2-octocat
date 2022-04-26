@@ -7,6 +7,7 @@ import SearchResult from './components/homepage/SearchResult';
 import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
 
+
 function App() {
   return (
     <div className="App text-white font-Heebo bg-black">
