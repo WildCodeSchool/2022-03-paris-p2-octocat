@@ -11,7 +11,6 @@ const HomePage = () => {
   const API_URL_TOPSERIES = `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_API_KEY}`;
   const API_URL_UPCOMING = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`;
 
-
   return (
     <>
       <Navbar />

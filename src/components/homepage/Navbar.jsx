@@ -3,12 +3,13 @@ import logo from '../../assets/images/logo-fakeflix.svg'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
 
     const [moviesGenres, setMoviesGenres] = useState([]);
     const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
-  
+
     useEffect(() => {
       axios.get(urlGenres)
       .then((res) => {
@@ -38,7 +39,7 @@ const Navbar = () => {
                 <nav className='flex flex-col px-4 justify-center'>
                     {moviesGenres.length > 0 && (
                     moviesGenres.map((genre, index) => 
-                    <Link key={index} to={`/searchpage/${genre.id}`}><p>{genre.name}</p></Link>
+                    <Link key={index} to={{pathname:`/searchpage/${genre.id}`, state:"cou"}}><p>{genre.name}</p></Link>
                     ))}
                 </nav>
             </div>
