@@ -12,8 +12,6 @@ function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const [movieCountries, setMovieCountries] = useState([]);
   const [movieGenres, setMovieGenres] = useState([]);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [favorites, setFavorites] = useState([]);
   const getDetails = `https://api.themoviedb.org/3/movie/${locationPath}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
   const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
   const imdbHref = `https://www.imdb.com/title/${movieDetails.imdb_id}`;
@@ -30,17 +28,21 @@ function MovieDetails() {
     })
   },[getDetails]);
 
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')));
+
   // toggle favorite button color
-  const toggleButton = (e) => {
-    setFavorites([{"id": 406759}]);
-    console.log('favorites',favorites)
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+  const toggleButton = () => {
     setIsFavorite(!isFavorite);
   }
 
-  // add movie to local storage (use stringify to convert from js object to json)
-  // localStorage.setItem('favorites', JSON.stringify(favorites));
-  // 
+  // handle the favorite feature with localstorage
+  const handleFavoriteclick = () => {
+    setFavorites([...favorites, {"id": movieDetails.id}]);
+    console.log('favorites',favorites)
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    toggleButton();
+  }
 
   return (
     <>
@@ -81,7 +83,7 @@ function MovieDetails() {
           <div className="flex flex-col justify-start items-start sm:justify-start sm:w-[30vw] sm:items-start sm:pr-10 sm:pl-18">
             <div className="rounded-md shadow pb-10">
               <button
-                onClick={toggleButton}
+                onClick={handleFavoriteclick}
                 style={{backgroundColor: isFavorite ? '#EAB308' : 'transparent', color: isFavorite ? 'black' : 'white'}}
                 className="flex justify-center items-center px-6 py-2 border-2 text-base font-bold rounded-md bg-transparent transition duration-500 ease-in-out w-full sm:hover:scale-125"
               >
