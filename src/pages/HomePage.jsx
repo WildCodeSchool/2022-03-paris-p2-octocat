@@ -3,7 +3,6 @@ import MovieSlider from '../components/homepage/MovieSlider';
 import Navbar from '../components/homepage/Navbar';
 import Footer from '../components/homepage/Footer';
 
-
 const HomePage = () => {
 
   const API_URL_TRENDINGWEEK = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -20,7 +19,7 @@ const HomePage = () => {
         <MovieSlider title="Top rated movies" dataSource={API_URL_TOPRATED} />
         <MovieSlider title="Top rated TV shows" dataSource={API_URL_TOPSERIES} />
         <MovieSlider title="Upcoming" dataSource={API_URL_UPCOMING} />
-      </div>     
+      </div>   
       <Footer />
     </>
   )

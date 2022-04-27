@@ -9,8 +9,6 @@ function SearchGrid({title, dataSource}) {
   let param = useParams();
   const API_URL_GENRE= `https://api.themoviedb.org/3/discover/movie?api_key=f0cf6cd5405edeea985fed5132d6e858&with_genres=${param.id}`;
 
-  // fetching list of movies genres
-
   const [moviesGenres, setMoviesGenres] = useState([]);
   const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0aba5a6d503daa5780b386d6fd32a451';
 
@@ -39,8 +37,6 @@ function SearchGrid({title, dataSource}) {
       setMovieList(data.results);
     })
   },[param.id]);
-
-  console.log('movieList', movieList);
 
   return (
     <>
