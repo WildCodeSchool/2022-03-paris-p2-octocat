@@ -6,6 +6,8 @@ const axios = require('axios');
 
 function MovieDetails() {
 
+
+  // display movie details
   const location = useLocation();
   const locationPath = location.state;
   const navigate = useNavigate()
@@ -28,20 +30,23 @@ function MovieDetails() {
     })
   },[getDetails]);
 
+  ////////// handle favorite feature
+
+  let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
+  
+  // make the favorite button state to persist (to do)
   const [isFavorite, setIsFavorite] = useState(false);
-  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')));
 
-  // toggle favorite button color
-  const toggleButton = () => {
-    setIsFavorite(!isFavorite);
-  }
-
-  // handle the favorite feature with localstorage
+  // handle local storage on click
   const handleFavoriteclick = () => {
-    setFavorites([...favorites, {"id": movieDetails.id}]);
-    console.log('favorites',favorites)
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-    toggleButton();
+    if (isFavorite) {
+      oldFavorites = oldFavorites.filter(movie => movie.id !== movieDetails.id);
+      localStorage.setItem('favorites', JSON.stringify(oldFavorites));
+    } else {
+      const newFavorites = [...oldFavorites, {'id': movieDetails.id}];
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    }
+    setIsFavorite(!isFavorite);
   }
 
   return (

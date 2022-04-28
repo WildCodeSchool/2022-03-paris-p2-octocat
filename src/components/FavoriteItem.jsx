@@ -20,9 +20,23 @@ function FavoriteItem({movieId}) {
 
   const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`;
 
-  const handleClick = (e) => {
-    console.log(e)
+  const handleClickItem = () => {
   }
+
+  //////// handle delete an item
+
+  // remove the favorite item of the favorite list when clicking the trash icon
+
+  // remove the movie from the local storage
+  let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
+
+  const handleTrash = () => {
+    oldFavorites = oldFavorites.filter(movie => movie.id !== movieDetails.id);
+    localStorage.setItem('favorites', JSON.stringify(oldFavorites));
+  }
+
+  // toggle the favorite button on movie details page on 'false'
+
 
   return isLoading ? (
     <svg role="status" className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-red-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +45,7 @@ function FavoriteItem({movieId}) {
     </svg>
   ) : (
     <>
-      <div class="w-56 h-72">
+      <div class="w-56 h-96">
         <div class="group relative">
           <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 sm:h-80 sm:aspect-none sm:cursor-pointer">
             <img src={imgSrc} alt="poster" class="w-full h-full object-center object-cover lg:w-full lg:h-full"/>
@@ -39,12 +53,19 @@ function FavoriteItem({movieId}) {
           <div class="mt-4 flex justify-between">
             <div>
               <h3 class="text-md text-white ">
-                <button onClick={handleClick} className='font-bold text-left'>
+                <button onClick={handleClickItem} className='font-bold text-left'>
                   {movieDetails.original_title}
                 </button>
               </h3>
               <p class="mt-1 text-sm text-white">{movieDetails.release_date.slice(0,4)}</p>
             </div>
+            <button
+            onClick={handleTrash}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
