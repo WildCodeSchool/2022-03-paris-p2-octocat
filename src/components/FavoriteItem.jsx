@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 const axios = require('axios');
 
 function FavoriteItem({movieId}) {
@@ -20,16 +21,22 @@ function FavoriteItem({movieId}) {
 
   const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`;
 
-  const handleClickItem = () => {
+  /////// redirect to movie details
+
+  const navigate = useNavigate();
+
+  const handleClickItem = (e) => {
+    e.preventDefault();
+    navigate(`/movie/${movieId}`, {state: movieId});
   }
 
-  //////// handle delete an item
+  //////// delete an item
 
   // remove the favorite item of the favorite list when clicking the trash icon
+  // i need to implement a function on the parent element to remove items on the list
 
   // remove the movie from the local storage
-  let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
-
+  let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];
   const handleTrash = () => {
     oldFavorites = oldFavorites.filter(movie => movie.id !== movieDetails.id);
     localStorage.setItem('favorites', JSON.stringify(oldFavorites));
@@ -47,13 +54,13 @@ function FavoriteItem({movieId}) {
     <>
       <div class="w-56 h-96">
         <div class="group relative">
-          <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 sm:h-80 sm:aspect-none sm:cursor-pointer">
+          <div onClick={handleClickItem} class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 sm:h-80 sm:aspect-none sm:cursor-pointer">
             <img src={imgSrc} alt="poster" class="w-full h-full object-center object-cover lg:w-full lg:h-full"/>
           </div>
           <div class="mt-4 flex justify-between">
             <div>
               <h3 class="text-md text-white ">
-                <button onClick={handleClickItem} className='font-bold text-left'>
+                <button className='font-bold text-left'>
                   {movieDetails.original_title}
                 </button>
               </h3>

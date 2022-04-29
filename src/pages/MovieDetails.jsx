@@ -33,11 +33,16 @@ function MovieDetails() {
   ////////// handle favorite feature
 
   let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
+  const [isFavorite, setIsFavorite] = useState(null);
+
+  // make the favorite button state to persist
   
-  // make the favorite button state to persist (to do)
-  const [isFavorite, setIsFavorite] = useState(false);
+  useEffect(() => {
+    setIsFavorite(oldFavorites.find(movie => movie.id === movieDetails.id))
+  },[movieDetails.id])
 
   // handle local storage on click
+  
   const handleFavoriteclick = () => {
     if (isFavorite) {
       oldFavorites = oldFavorites.filter(movie => movie.id !== movieDetails.id);
