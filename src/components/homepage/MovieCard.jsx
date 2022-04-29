@@ -55,9 +55,6 @@ function MovieCard({data, moviesGenres}) {
         </div>
       </div>
     </>
-
-
-    
   )
 }
 
