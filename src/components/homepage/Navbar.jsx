@@ -7,6 +7,8 @@ import {Link} from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 import Modal from './Modal';
 
+
+
 const Navbar = () => {
 
     const [moviesGenres, setMoviesGenres] = useState([]);
@@ -27,7 +29,7 @@ const Navbar = () => {
         setToggleMenu(!toggleMenu)
     };
 
-    const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
     
   return (
     <div className='flex justify-between items-center py-4 px-4'>
@@ -41,6 +43,7 @@ const Navbar = () => {
             </button>
             <div onClick={handleClick} className={toggleMenu ? 'z-50 sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 duration-500' : 'absolute left-[-100%]'}>
                 <nav className='flex flex-col px-4 justify-center'>
+                    <SearchBar />
                     {moviesGenres.length > 0 && (
                     moviesGenres.map((genre, index) => 
                     <Link key={index} to={{pathname:`/searchpage/${genre.id}`, state:"cou"}}><p>{genre.name}</p></Link>
@@ -57,7 +60,7 @@ const Navbar = () => {
         </div>
         <div className='flex gap-3 items-center'>
             <SearchBar />
-            <Modal open={openModal}/>
+            <Modal open={openModal} onClose={() => setOpenModal(false)}/>
             <button onClick={() => setOpenModal(true)} className='rounded-lg py-1 px-2 border-transparent bg-red-600 hover:bg-red-800'>Login</button>
         </div>
     </div>  
