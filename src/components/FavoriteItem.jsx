@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 const axios = require('axios');
 
-function FavoriteItem({movieId}) {
+function FavoriteItem({movieId, removeItem}) {
 
   const getDetails = `https://api.themoviedb.org/3/movie/${movieId}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
   const [movieDetails, setMovieDetails] = useState({});
@@ -32,18 +32,13 @@ function FavoriteItem({movieId}) {
 
   //////// delete an item
 
-  // remove the favorite item of the favorite list when clicking the trash icon
-  // i need to implement a function on the parent element to remove items on the list
-
-  // remove the movie from the local storage
   let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];
+
   const handleTrash = () => {
     oldFavorites = oldFavorites.filter(movie => movie.id !== movieDetails.id);
     localStorage.setItem('favorites', JSON.stringify(oldFavorites));
-  }
-
-  // toggle the favorite button on movie details page on 'false'
-
+    removeItem(movieId);
+  };
 
   return isLoading ? (
     <svg role="status" className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-red-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
