@@ -4,6 +4,7 @@ import Navbar from '../components/homepage/Navbar';
 import Footer from '../components/homepage/Footer';
 
 
+
 const HomePage = () => {
 
   const API_URL_TRENDINGWEEK = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}`;
