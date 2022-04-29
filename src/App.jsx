@@ -9,6 +9,7 @@ import TvDetails from './pages/TvDetails';
 import FavoritesPage from './pages/FavoritesPage';
 
 
+
 function App() {
   return (
     <div className="App text-white font-Heebo bg-black">
