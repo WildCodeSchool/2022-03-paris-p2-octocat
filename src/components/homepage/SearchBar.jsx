@@ -17,7 +17,7 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="hidden sm:flex sm:items-center sm:text-black" id="search-bar">
+    <div className="flex items-center text-black" id="search-bar">
       <div id="search-bar-container" className="flex items-center gap-4">
         <div id="search-bar-input">
           <input id= "research-text-field" className="flex rounded-lg py-1 px-2 border-transparent" 
