@@ -1,11 +1,13 @@
 import Navbar from "../components/homepage/Navbar";
 import Footer from "../components/homepage/Footer";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 const axios = require('axios');
 
 function MovieDetails() {
 
+
+  // display movie details
   const location = useLocation();
   const locationPath = location.state;
   const navigate = useNavigate()
@@ -27,6 +29,30 @@ function MovieDetails() {
       setMovieGenres(data.genres);
     })
   },[getDetails]);
+
+  ////////// handle favorite feature
+
+  let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
+  const [isFavorite, setIsFavorite] = useState(null);
+
+  // make the favorite button state to persist
+  
+  useEffect(() => {
+    setIsFavorite(oldFavorites.find(movie => movie.id === movieDetails.id))
+  },[movieDetails.id])
+
+  // handle local storage on click
+  
+  const handleFavoriteclick = () => {
+    if (isFavorite) {
+      oldFavorites = oldFavorites.filter(movie => movie.id !== movieDetails.id);
+      localStorage.setItem('favorites', JSON.stringify(oldFavorites));
+    } else {
+      const newFavorites = [...oldFavorites, {'id': movieDetails.id}];
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    }
+    setIsFavorite(!isFavorite);
+  }
 
   return (
     <>
@@ -67,10 +93,12 @@ function MovieDetails() {
           <div className="flex flex-col justify-start items-start sm:justify-start sm:w-[30vw] sm:items-start sm:pr-10 sm:pl-18">
             <div className="rounded-md shadow pb-10">
               <button
-                className="flex justify-center items-center px-6 py-2 border-2 text-base font-medium rounded-md text-white bg-transparent transition duration-500 ease-in-out w-full sm:hover:scale-125 sm:hover:bg-slate-800"
+                onClick={handleFavoriteclick}
+                style={{backgroundColor: isFavorite ? '#EAB308' : 'transparent', color: isFavorite ? 'black' : 'white'}}
+                className="flex justify-center items-center px-6 py-2 border-2 text-base font-bold rounded-md bg-transparent transition duration-500 ease-in-out w-full sm:hover:scale-125"
               >
-              <p className="pr-2">Add</p>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 hover:opacity-75" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <p className="pr-2">Favorite</p>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 hover:opacity-75" fill="white" viewBox="0 0 24 24" stroke="none" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
               </button>
