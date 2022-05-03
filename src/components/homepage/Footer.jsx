@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom'
 
 function Footer() {
   return (
@@ -9,6 +9,7 @@ function Footer() {
         </a>
         <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-red-600 sm:py-2 sm:mt-0 mt-4">© 2022 Faketeam
         </p>
+        <Link to='/contact' className="text-sm text-gray-500 sm:ml-4 sm:pl-2 sm:border-l sm:border-gray-500 sm:mt-0 mt-4">Contact</Link>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
           <a href="https://facebook.com" className="text-gray-500">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
