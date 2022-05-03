@@ -39,8 +39,12 @@ const Banner = () => {
     navigate(`/movie/${movieId}`, {state: movieId});
   };
 
+  const handleNavigatePlayPage = () => {
+    navigate("/play-page");
+  }
+
   return (
-    
+
     <> 
       <div className="h-[70vh] flex align-center sm:justify-start bg-no-repeat bg-cover bg-center top-0" style={{backgroundImage:`url(${isDesktop ? (posterURLDesktop) : (posterURLMobile)})`}}>
           <div className="px-8 flex justify-center flex-col sm:px-40 sm:py-30 sm:h-full sm:w-full sm:justify-start sm:align-start sm:flex-col bg-neutral-800/30">
@@ -53,7 +57,7 @@ const Banner = () => {
               </p>
               <div className="flex px-8 pt-8 justify-center align-center sm:justify-start sm:px-0">
                 <div className="pr-6">
-                  <button className="flex px-6 py-2 transition ease-in duration-200 uppercase rounded-full border-transparent bg-red-600 hover:bg-red-800"
+                  <button id="playButton" onClick={handleNavigatePlayPage} className="flex px-6 py-2 transition ease-in duration-200 uppercase rounded-full border-transparent bg-red-600 hover:bg-red-800"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 pr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />

@@ -48,9 +48,11 @@ const SearchBar = () => {
             {searchResults.map(result => <li className="text-white">{result.title}</li>)}
           </ul>
         </div>
+
         <div>
           <button className="text-white" onClick={handleNavigatePlayPage}>AnimTest</button>
         </div>
+        
       </div>
     </div>
   );

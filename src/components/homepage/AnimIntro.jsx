@@ -3,20 +3,8 @@ import "./AnimIntro.css"
 
 const AnimIntro = () => {
 
-    // const audio = document.getElementById("audio");
-    
-    // const playAudio = () => {
-    //     audio.play();
-    // }
-
-    // playAudio();
-
     return (
     <>
-        {/* <audio id="audio" controls play className=" ">
-            <source src="../../assets/sound/netflix-intro-sound.mp3" type="audio/mpeg"/>
-            Your browser does not support the audio element.
-        </audio> */}
         <div id="container" >
             <netflixintro letter="F">
                 <div class="helper-1">

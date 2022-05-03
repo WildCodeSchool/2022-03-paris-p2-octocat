@@ -8,6 +8,8 @@ import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
 import AnimIntro from './components/homepage/AnimIntro';
 import PlayPage from './pages/PlayPage';
+import FavoritesPage from './pages/FavoritesPage';
+
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/tv/:id" element={<TvDetails />} />
         <Route path='/searchpage/:id' element={<SearchPage />} />
+        <Route path='/favorites' element={<FavoritesPage />} />
       </Routes>
     </div>
   );

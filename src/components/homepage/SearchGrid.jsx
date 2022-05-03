@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 function SearchGrid({title, dataSource}) {
@@ -42,11 +43,21 @@ function SearchGrid({title, dataSource}) {
       <div className='h-full pl-4'>
         <div className='font-extrabold text-xl pl-4 py-4 Slate'>
 
-        {
+        {/* {
           moviesGenres.length > 0 && (
           moviesGenres.map((genre) => 
           <h2 className='font-extrabold text-xl text-white'>{genre.name}</h2>
-          ))}
+          ))} */}
+
+        { 
+          movieList.length > 0 && (
+          movieList.map((genre) => { 
+            if (genre.id === param.id) {
+            return <h2 className='font-extrabold text-xl text-white'>{genre.name}</h2>
+            }
+          }
+          )
+        )}
 
         </div>
             <div className='flex flex-wrap h-full gap-y-8 mt-2.5 justify-center'>
