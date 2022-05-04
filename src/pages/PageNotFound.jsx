@@ -12,7 +12,7 @@ const PageNotFound = () => {
     </video>
     <div className="h-screen w-screen flex flex-col gap-5 justify-center items-center">
      <div className="relative text-red-600 text-6xl sm:text-9xl font-bold z-10">
-      OUPS!...404
+      OOPS!...404
      </div>
      <button className="relative z-10 rounded-lg text-xl sm:text-5xl py-3 px-4 border-transparent bg-black hover:bg-red-600">
     <a href='/'>BACK HOME</a>
