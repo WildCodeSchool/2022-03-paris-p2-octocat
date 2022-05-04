@@ -43,11 +43,11 @@ const ContactPage = () => {
   <div>
    <Navbar />
    <div>
-    <div className="absolute h-screen w-screen flex justify-center items-center z-50">
+    <div className="absolute h-screen w-screen flex justify-center items-center z-20">
      <form
       ref={form}
       onSubmit={sendEmail}
-      className="flex flex-col gap-5 sm:p-28 pt-10 relative bg-black"
+      className="flex flex-col gap-5 sm:p-28 pt-10 relative bg-black rounded"
      >
       <h2 className="text-slate-50 text-2xl font-medium flex justify-center">
        CONTACT FORM
@@ -82,7 +82,7 @@ const ContactPage = () => {
        <option stylevalue="1">Select your subject</option>
        <option value="1">Fakeflix is Awsome</option>
        <option value="1">Good Job Bro</option>
-       <option value="1">Need to talk to someone</option>
+       <option value="1">Need to talk !</option>
       </select>
       <textarea
        className="bg-neutral-800 text-slate-50 rounded p-2 w-72 h-30 mr-10 ml-10"
@@ -111,7 +111,7 @@ const ContactPage = () => {
 
 const renderAlert = () => (
     <div className="px-4 py-3 leading-normal text-red-600 bg-blue-100 rounded mb-5 text-center">
-      <p>Your message submitted successfully</p>
+      <p>Your message was submitted successfully</p>
     </div>
   )
 
