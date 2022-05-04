@@ -7,8 +7,8 @@ import SearchResult from './components/homepage/SearchResult';
 import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
 import FavoritesPage from './pages/FavoritesPage';
-
-
+import ContactPage from './pages/ContactPage';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
@@ -21,6 +21,8 @@ function App() {
         <Route path="/tv/:id" element={<TvDetails />} />
         <Route path='/searchpage/:id' element={<SearchPage />} />
         <Route path='/favorites' element={<FavoritesPage />} />
+        <Route path='/contact' element={<ContactPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
