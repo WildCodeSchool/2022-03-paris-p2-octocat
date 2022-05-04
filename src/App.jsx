@@ -7,6 +7,7 @@ import SearchResult from './components/homepage/SearchResult';
 import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
 import FavoritesPage from './pages/FavoritesPage';
+import EshopPage from './pages/EshopPage';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/tv/:id" element={<TvDetails />} />
         <Route path='/searchpage/:id' element={<SearchPage />} />
         <Route path='/favorites' element={<FavoritesPage />} />
+        <Route path='/shop' element={<EshopPage />} />
       </Routes>
     </div>
   );
