@@ -1,6 +1,7 @@
 import Navbar from '../components/homepage/Navbar';
 import Footer from '../components/homepage/Footer';
-import ProductsView from '../components/ProductsView';
+import ProductsView from '../components/eshop/ProductsView';
+import { Outlet } from 'react-router-dom'
 
 function EshopPage() {
 

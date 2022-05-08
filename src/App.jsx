@@ -8,6 +8,7 @@ import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
 import FavoritesPage from './pages/FavoritesPage';
 import EshopPage from './pages/EshopPage';
+import Cart from './components/eshop/Cart';
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/searchpage/:id' element={<SearchPage />} />
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='/shop' element={<EshopPage />} />
+        <Route path='/shop/cart' element={<Cart/>} />
       </Routes>
     </div>
   );
