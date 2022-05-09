@@ -6,7 +6,7 @@ const Modal = ({ open, children, onClose }) => {
         if(!open) return null
 
         return ReactDom.createPortal(
-        <div className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-70 z-40">
+            <div className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-70 z-40">
             <div onClick={onClose} className="fixed top-0 left-0 h-screen w-screen flex justify-center items-center z-50">
                 <div onClick={(e) => {e.stopPropagation()}} className="flex flex-col bg-black rounded-lg">
                     <button onClick={onClose} className="flex justify-end pr-3 pt-3">
@@ -14,7 +14,6 @@ const Modal = ({ open, children, onClose }) => {
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-
                 <ModalForm />
                 </div>
             </div>
