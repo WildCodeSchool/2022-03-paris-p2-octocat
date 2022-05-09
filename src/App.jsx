@@ -9,8 +9,8 @@ import TvDetails from './pages/TvDetails';
 import AnimIntro from './components/homepage/AnimIntro';
 import FavoritesPage from './pages/FavoritesPage';
 import MovieTrailer from './components/MovieTrailer';
-
-
+import ContactPage from './pages/ContactPage';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
@@ -25,6 +25,8 @@ function App() {
         <Route path='/searchpage/:id' element={<SearchPage />} />
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='/movie/trailer/:id' element={<MovieTrailer />} />
+        <Route path='/contact' element={<ContactPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
