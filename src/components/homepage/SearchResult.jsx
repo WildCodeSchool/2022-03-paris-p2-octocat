@@ -29,7 +29,7 @@ const SearchResult = () => {
 
     useEffect(() => {
       axios
-          .get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}`)
+          .get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&language=en-US`)
           .then((res) => res.data.results)
           .then((data) => setMovies(data))
   }, [search]);

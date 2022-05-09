@@ -7,8 +7,8 @@ import SearchResult from './components/homepage/SearchResult';
 import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
 import AnimIntro from './components/homepage/AnimIntro';
-import PlayPage from './pages/PlayPage';
 import FavoritesPage from './pages/FavoritesPage';
+import MovieTrailer from './components/MovieTrailer';
 
 
 
@@ -20,11 +20,11 @@ function App() {
         <Route path='/input-search-result' element={<SearchPagebyInput />} />
         <Route path='/search-result' element={<SearchResult />} />
         <Route path='/anim-intro' element={<AnimIntro />} />
-        <Route path='/play-page' element={<PlayPage />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/tv/:id" element={<TvDetails />} />
         <Route path='/searchpage/:id' element={<SearchPage />} />
         <Route path='/favorites' element={<FavoritesPage />} />
+        <Route path='/movie/trailer/:id' element={<MovieTrailer />} />
       </Routes>
     </div>
   );

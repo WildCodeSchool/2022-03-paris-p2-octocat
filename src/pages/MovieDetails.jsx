@@ -2,6 +2,10 @@ import Navbar from "../components/homepage/Navbar";
 import Footer from "../components/homepage/Footer";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
+// import MovieContext from "../components/contexts/MovieContext";
+// import MovieTrailer from "../components/MovieTrailer";
+
 const axios = require('axios');
 
 function MovieDetails() {
@@ -14,6 +18,7 @@ function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const [movieCountries, setMovieCountries] = useState([]);
   const [movieGenres, setMovieGenres] = useState([]);
+
   const getDetails = `https://api.themoviedb.org/3/movie/${locationPath}?api_key=0aba5a6d503daa5780b386d6fd32a451`;
   const imgSrc = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
   const imdbHref = `https://www.imdb.com/title/${movieDetails.imdb_id}`;
@@ -54,17 +59,18 @@ function MovieDetails() {
     setIsFavorite(!isFavorite);
   }
 
-  const handleNavigatePlayPage = () => {
-    navigate("/play-page");
+  const handleNavigateTrailer = () => {
+    navigate(`/movie/trailer/${movieDetails.id}`);
   }
 
   return (
     <>
+      
       <Navbar />
       <div className="py-4 w-screen">
         <div className="flex items-center justify-center">
           <div className="relative w-full h-[40vh] flex justify-center items-center sm:h-[60vh] bg-no-repeat bg-cover top-0" style={{backgroundImage:`url(${imgSrc}`}}>
-              <button className="absolute" onClick={handleNavigatePlayPage}>
+              <button className="absolute" onClick={handleNavigateTrailer}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 sm:h-40 sm:w-40 opacity-50" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                 </svg>

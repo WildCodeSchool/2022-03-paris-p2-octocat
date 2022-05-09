@@ -40,7 +40,7 @@ const Banner = () => {
   };
 
   const handleNavigatePlayPage = () => {
-    navigate("/play-page");
+    navigate(`/movie/trailer/${movieId}`);
   }
 
   return (
