@@ -9,7 +9,7 @@ function FavoritesList() {
     setFavorites(favorites.filter((movie) => movie.id !== movieId));
   }, [favorites]);
 
-  return favorites === null ? "No favorites found !" : (
+  return favorites.length === 0 ? "No favorites found !" : (
     <div className='flex sm:flex-wrap sm:gap-x-10 sm:gap-y-10 h-screen pb-32'>
       {favorites.map((favorite) => 
         {
