@@ -9,6 +9,7 @@ import TvDetails from './pages/TvDetails';
 import FavoritesPage from './pages/FavoritesPage';
 import ContactPage from './pages/ContactPage';
 import PageNotFound from './pages/PageNotFound';
+import EshopPage from './pages/EshopPage';
 
 function App() {
   return (
@@ -22,7 +23,6 @@ function App() {
         <Route path='/searchpage/:id' element={<SearchPage />} />
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='/shop' element={<EshopPage />} />
-        <Route path='/shop/cart' element={<Cart/>} />
         <Route path='/contact' element={<ContactPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
