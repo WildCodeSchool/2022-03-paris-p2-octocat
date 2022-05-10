@@ -1,13 +1,11 @@
 import React from 'react'
 import ProductContext from '../../contexts/ProductContext';
-import {useContext, useState} from 'react';
+import {useContext} from 'react';
 import ProductItem from './ProductItem';
 
 function ProductsList() {
 
   const products = useContext(ProductContext)
-
-  console.log('products', products)
 
   return (
     <ProductContext.Consumer>
