@@ -71,7 +71,7 @@ function MovieCard({data, moviesGenres}) {
             // eslint-disable-next-line array-callback-return
             moviesGenres.genres.map((genre) => { 
               if(data.genre_ids.includes(genre.id)) {
-                return `  ${genre.name}`
+                return `${genre.name}`
               }
             })
           }
