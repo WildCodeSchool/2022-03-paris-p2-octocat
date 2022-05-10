@@ -39,13 +39,15 @@ const Navbar = () => {
                         <span className='block w-5 h-0.5 bg-slate-50'></span>
                     </div>
             </button>
-            <div onClick={handleClick} className={toggleMenu ? 'z-50 sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 duration-500' : 'absolute left-[-100%]'}>
+            <div className={toggleMenu ? 'z-50 sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 duration-500' : 'absolute left-[-100%]'}>
                 <nav className='flex flex-col px-4 justify-center'>
                     <SearchBar />
+                    <div onClick={handleClick} >
                     {moviesGenres.length > 0 && (
                     moviesGenres.map((genre, index) => 
                     <Link key={index} to={{pathname:`/searchpage/${genre.id}`, state:"cou"}}><p>{genre.name}</p></Link>
                     ))}
+                    </div>
                 </nav>
             </div>
             <a href='/'><img className='h-8' src={logo} alt='fakeflix-logo'/> </a>
