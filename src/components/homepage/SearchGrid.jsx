@@ -49,7 +49,7 @@ function SearchGrid({title, dataSource}) {
           <h2 className='font-extrabold text-xl text-white'>{genre.name}</h2>
           ))} */}
 
-        { 
+        {/* { 
           movieList.length > 0 && (
           movieList.map((genre) => { 
             if (genre.id === param.id) {
@@ -57,8 +57,8 @@ function SearchGrid({title, dataSource}) {
             }
           }
           )
-        )}
-
+        )} */}
+          
         </div>
             <div className='flex flex-wrap h-full gap-y-8 mt-2.5 justify-center'>
               {movieList.length > 0 &&

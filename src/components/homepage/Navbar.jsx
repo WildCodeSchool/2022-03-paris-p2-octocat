@@ -23,6 +23,7 @@ const Navbar = () => {
     },[]);
 
     const [toggleMenu, setToggleMenu] = useState(false);
+
     const handleClick = () => {
         setToggleMenu(!toggleMenu)
     };
@@ -39,13 +40,13 @@ const Navbar = () => {
                         <span className='block w-5 h-0.5 bg-slate-50'></span>
                     </div>
             </button>
-            <div id="dropdown_menu" className={toggleMenu ? 'z-50 sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 transition-all duration-500 ease-in-out' : 'absolute left-[-100%]'}>
+            <div id="dropdown_menu" className={toggleMenu ? 'z-50 sm:hidden absolute left-0 top-0 mt-16 bg-black leading-10 px-4 py-2 transition-all ease-out duration-500' : 'absolute z-50 top-0 mt-16 bg-black leading-10 px-4 py-2 left-[-100%] transition-all ease-in duration-500 '}>
                 <nav className='flex flex-col px-4 justify-center'>
                     <SearchBar />
                     <div id="categories" onClick={handleClick} className="pt-4" >
                     {moviesGenres.length > 0 && (
                     moviesGenres.map((genre, index) => 
-                    <Link key={index} to={{pathname:`/searchpage/${genre.id}`, state:"cou"}}><p>{genre.name}</p></Link>
+                    <Link className='opacity-70 hover:opacity-100 hover:text-red-500' key={index} to={{pathname:`/searchpage/${genre.id}`, state:"cou"}}><p>{genre.name}</p></Link>
                     ))}
                     </div>
                 </nav>
