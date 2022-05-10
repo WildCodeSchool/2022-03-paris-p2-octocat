@@ -7,10 +7,8 @@ import SearchResult from './components/homepage/SearchResult';
 import MovieDetails from './pages/MovieDetails';
 import TvDetails from './pages/TvDetails';
 import FavoritesPage from './pages/FavoritesPage';
-import EshopPage from './pages/EshopPage';
-import Cart from './components/eshop/Cart';
-
-
+import ContactPage from './pages/ContactPage';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
@@ -25,6 +23,8 @@ function App() {
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='/shop' element={<EshopPage />} />
         <Route path='/shop/cart' element={<Cart/>} />
+        <Route path='/contact' element={<ContactPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

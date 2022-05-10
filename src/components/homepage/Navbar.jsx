@@ -7,8 +7,6 @@ import {Link} from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 import Modal from './Modal';
 
-
-
 const Navbar = () => {
 
     const [moviesGenres, setMoviesGenres] = useState([]);
@@ -68,8 +66,8 @@ const Navbar = () => {
         </div>
         <div className='flex gap-4 items-center'>
             <Link to='/favorites' className='font-bold hover:text-red-600'>My favorites</Link>
-            <SearchBar />
-            <button className='rounded-lg py-1 px-2 border-transparent bg-red-600 hover:bg-red-800'>Login</button>
+            <Modal open={openModal} onClose={() => setOpenModal(false)}/>
+            <button onClick={() => setOpenModal(true)} className='rounded-lg py-1 px-2 border-transparent bg-red-600 hover:bg-red-800'>Sign In</button>
         </div>
     </div>  
   )

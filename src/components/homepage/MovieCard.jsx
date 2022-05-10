@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import CardFavButton from "./CardFavButton";
 
 function MovieCard({data, moviesGenres}) {
   
@@ -22,10 +23,34 @@ function MovieCard({data, moviesGenres}) {
       navigate(`/movie/${mediaId}`, {state: mediaId});
     }
   };
+
+    ////////// handle favorite feature
+
+    let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
+    const [isFavorite, setIsFavorite] = useState(null);
+  
+    // make the favorite button state to persist
+    
+    useEffect(() => {
+      setIsFavorite(oldFavorites.find(movie => movie.id === data.id))
+    },[data.id])
+  
+    // handle local storage on click
+    
+    const handleFavoriteclick = () => {
+      if (isFavorite) {
+        oldFavorites = oldFavorites.filter(movie => movie.id !== data.id);
+        localStorage.setItem('favorites', JSON.stringify(oldFavorites));
+      } else {
+        const newFavorites = [...oldFavorites, {'id': data.id}];
+        localStorage.setItem('favorites', JSON.stringify(newFavorites));
+      }
+      setIsFavorite(!isFavorite);
+    }
   
   return (
     <>
-      <div onClick={handleClick} className='cursor-pointer z-10 relative rounded-md overflow-hidden flex justify-start items-end shrink-0 mr-8 w-80 h-40 bg-no-repeat bg-cover sm:hover:scale-110 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
+      <div className='cursor-pointer z-10 relative rounded-md overflow-hidden flex justify-start items-end shrink-0 mr-8 w-80 h-40 bg-no-repeat bg-cover sm:hover:scale-110 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
         <div className='absolute w-full h-full pt-12 pl-4'>
           <div className='card icons flex justify-between items-center w-1/4'>
             <button>
@@ -33,13 +58,9 @@ function MovieCard({data, moviesGenres}) {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
               </svg>
             </button>
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 hover:opacity-75" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </button>
+            <CardFavButton data={data} />
           </div>
-          <div className='font-bold sm:text-lg'>
+          <div onClick={handleClick} className='font-bold sm:text-lg'>
             {data.original_title ? data.original_title : data.original_name}
           </div>
           <div className='font-light sm:text-sm'>
