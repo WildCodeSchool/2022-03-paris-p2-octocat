@@ -66,7 +66,7 @@ function MovieCard({data, moviesGenres}) {
           <div onClick={handleClick} className='font-bold sm:text-lg'>
             {data.original_title ? data.original_title : data.original_name}
           </div>
-          <div className='font-light sm:text-sm'>
+          <div className='font-light sm:text-sm '>
           {
             // eslint-disable-next-line array-callback-return
             moviesGenres.genres.map((genre) => { 
