@@ -12,20 +12,31 @@ const SearchBar = () => {
   
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
+  const handleNavigateSearch = () => {
     navigate("/search-result",{state: {searchQuery}});
   }
+
+  // Press enter to search
+  const handleSearch = () => {
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") { handleNavigateSearch();}
+      })}
+
+  useEffect(() => {
+    handleSearch();
+  },[]);
 
   return (
     <div className="flex items-center text-black" id="search-bar">
       <div id="search-bar-container" className="flex items-center gap-4">
         <div id="search-bar-input">
-          <input id= "research-text-field" className="flex rounded-lg py-1 px-2 border-transparent" 
-            type="text" placeholder="Enter a movie title..."
+            <input id= "research-text-field" className="flex rounded-lg py-1 px-2 border-transparent" 
+            type="text" placeholder="Enter a movie title..." 
+            onKeyDown={handleSearch}
             value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
         </div>
         <div id="search-bar-button" className="flex justify-center items-center">
-            <button className="text-white" disabled={!searchQuery} onClick={handleNavigate}>{searchIcon}</button>
+            <button className="text-white" disabled={!searchQuery} onClick={handleNavigateSearch}>{searchIcon}</button>
         </div>
         <div>
           <ul id="search-results">

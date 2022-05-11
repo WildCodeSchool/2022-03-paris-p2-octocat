@@ -24,6 +24,9 @@ function MovieCard({data, moviesGenres}) {
     }
   };
 
+  const handleNavigatePlayPage = () => {
+    navigate("/play-page");
+  }
     ////////// handle favorite feature
 
     let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
@@ -52,9 +55,9 @@ function MovieCard({data, moviesGenres}) {
     <>
       <div className='cursor-pointer z-10 relative rounded-md overflow-hidden flex justify-start items-end shrink-0 mr-8 w-80 h-40 bg-no-repeat bg-cover sm:hover:scale-110 sm:ease-in-out sm:duration-300' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
         <div className='absolute w-full h-full pt-12 pl-4'>
-          <div className='card icons flex justify-between items-center w-1/4'>
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 hover:opacity-90 " viewBox="0 0 20 20" fill="currentColor">
+          <div id="card_icons" className='flex justify-between items-center w-1/4'>
+            <button id="play_button" className="relative z-100" onClick={handleNavigatePlayPage}>
+              <svg xmlns="http://www.w3.org/2000PlayP/svg" className="h-10 w-10 hover:opacity-90" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
               </svg>
             </button>

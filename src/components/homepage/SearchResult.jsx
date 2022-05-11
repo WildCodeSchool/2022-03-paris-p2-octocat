@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const SearchResult = () => {
 
@@ -27,27 +29,29 @@ const SearchResult = () => {
 
     useEffect(() => {
       axios
-          .get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}`)
+          .get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&language=en-US`)
           .then((res) => res.data.results)
           .then((data) => setMovies(data))
   }, [search]);
 
     return (
-        <>
-      <div className='h-full pl-4'>
-        <div className='font-extrabold text-xl pl-4 py-4'>
-          <h2>{search}</h2>
+      <>
+        <Navbar />
+        <div className='h-full pl-4'>
+          <div className='font-extrabold text-xl pl-4 py-4'>
+            <h2>{search}</h2>
+          </div>
+          <div className='flex flex-wrap h-full gap-y-8 mt-2.5 justify-center'>
+            {movies.length > 0 && movies.map((movie,i) => {
+                return (         
+                  <MovieCard key={movie.id} data={movie} moviesGenres={moviesGenres}/>
+                )
+              })
+            }
+          </div>
         </div>
-        <div className='flex flex-wrap h-full gap-y-8 mt-2.5 justify-center'>
-          {movies.length > 0 && movies.map((movie,i) => {
-              return (            
-                <MovieCard key={movie.id} data={movie} moviesGenres={moviesGenres}/>
-              )
-            })
-          }
-        </div>
-      </div>
-    </>
+        <Footer />
+      </>
     );
 };
 
