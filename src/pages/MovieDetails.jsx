@@ -2,6 +2,7 @@ import Navbar from "../components/homepage/Navbar";
 import Footer from "../components/homepage/Footer";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import CommentForm from "../components/homepage/CommentForm";
 const axios = require('axios');
 
 function MovieDetails() {
@@ -67,7 +68,7 @@ function MovieDetails() {
               </button>
           </div>
         </div>
-        <div className="pl-3 py-12 sm:flex sm:pl-0 sm:items-start sm:justify-evenly sm:gap-40 sm:w-full ">
+        <div className="pl-3 pt-12 pb-4 sm:flex sm:pl-0 sm:items-start sm:justify-evenly sm:gap-40 sm:w-full ">
           <div className="flex flex-col justify-center sm:w-2/4 sm:pl-20">
             <h1 className="font-bold text-left text-3xl pb-4 sm:text-7xl sm:pl-0 ">{ movieDetails.original_title ? movieDetails.original_title : movieDetails.name }</h1>
             <h2 className="font-medium text-left text-lg pb-2 sm:text-4xl sm:pl-0 ">{ movieDetails.tagline }</h2>
@@ -151,10 +152,19 @@ function MovieDetails() {
                   </svg>
                 </button>
               </div>      
-            
           </div>
         </div>
       </div>
+
+
+        <div className="sm:pl-32 pl-3">
+        <h2 className="font-large text-left text-md pb-2 sm:text-2xl">Add comment</h2>
+        <div className="flex justify-center sm:justify-start">
+        <CommentForm />
+        </div>
+      </div>
+
+
       <Footer />
     </>
   )
