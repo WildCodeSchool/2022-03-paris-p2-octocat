@@ -1,0 +1,87 @@
+
+[
+  {
+    "name": "Lay's Recette paysanne nature",
+    "href": "#",
+    "price": "4€50",
+    "category": "food",
+    "imageSrc": "https://zupimages.net/up/22/18/66rk.png",
+    "imageAlt": "Lay's Recette paysanne nature"
+  },
+  {
+    "name": "Guacamole - U - 300 g",
+    "href": "#",
+    "price": "5€",
+    "category": "food",
+    "imageSrc": "https://zupimages.net/up/22/18/d0bh.png",
+    "imageAlt": "Guacamole - U - 300 g"
+  },
+  {
+    "name": "Kronenbourg 1664 50cl",
+    "href": "#",
+    "price": "2€",
+    "category": "drinks",
+    "imageSrc": "https://zupimages.net/up/22/18/hd82.png",
+    "imageAlt": "Kronenbourg 1664 50cl"
+  },
+  {
+    "name": "7UP citron & citron vert 1,5L",
+    "href": "#",
+    "price": "4€",
+    "category": "drinks",
+    "imageSrc": "https://zupimages.net/up/22/18/lkoy.png",
+    "imageAlt": "7UP citron & citron vert 1,5L"
+  },
+  {
+    "name": "Doritos goût nature",
+    "href": "#",
+    "price": "3€99",
+    "category": "food",
+    "imageSrc": "https://zupimages.net/up/22/18/weqf.png",
+    "imageAlt": "Doritos goût nature"
+  },
+  {
+    "name": "Coca-Cola 1L",
+    "href": "#",
+    "price": "5€",
+    "category": "drinks",
+    "imageSrc": "https://zupimages.net/up/22/18/gin9.png",
+    "imageAlt": "Coca-Cola 1L"
+  },
+  {
+    "name": "Tuiles Pringles Barbecue",
+    "href": "#",
+    "price": "2€99",
+    "category": "food",
+    "imageSrc": "https://zupimages.net/up/22/18/82c9.png",
+    "imageAlt": "Tuiles Pringles Barbecue"
+  },
+  {
+    "name": "Lipton Ice Tea pêche 2L",
+    "href": "#",
+    "price": "4€",
+    "category": "drinks",
+    "imageSrc": "https://zupimages.net/up/22/18/mp3n.png",
+    "imageAlt": "Lipton Ice Tea pêche 2L"
+  },
+  {
+    "name": "Chips Bret's Poulet Braisé",
+    "href": "#",
+    "price": "3€50",
+    "category": "food",
+    "imageSrc": "https://zupimages.net/up/22/18/eud0.png",
+    "imageAlt": "Chips Bret's Poulet Braisé"
+  },
+
+  {
+    "name": "Frite Four - MC CAIN",
+    "href": "#",
+    "price": "5€",
+    "category": "food",
+    "imageSrc": "https://zupimages.net/up/22/18/f3sj.png",
+    "imageAlt": "Frite Four - MC CAIN"
+  }
+]
+
+
+
