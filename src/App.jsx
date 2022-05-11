@@ -11,6 +11,7 @@ import FavoritesPage from './pages/FavoritesPage';
 import MovieTrailer from './components/MovieTrailer';
 import ContactPage from './pages/ContactPage';
 import PageNotFound from './pages/PageNotFound';
+import EshopPage from './pages/EshopPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/searchpage/:id' element={<SearchPage />} />
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='/movie/trailer/:id' element={<MovieTrailer />} />
+        <Route path='/shop' element={<EshopPage />} />
         <Route path='/contact' element={<ContactPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
