@@ -2,7 +2,7 @@ import React from "react";
 
 const Comment = ({ comment }) => {
  return (
-  <div>
+  <div className="flex-col sm:w-96 w-72">
    <div className="text-red-600 font-bold mb-1">{comment.name}</div>
 
    {comment.notation ?
@@ -25,7 +25,7 @@ const Comment = ({ comment }) => {
 </div>
 : null}
 {comment.comment ?
-   <div className=" bg-zinc-700 rounded flex overflow-hidden break-words w-72 mb-5 p-6">
+   <div className=" bg-zinc-700 rounded flex overflow-hidden break-words w-72 sm:w-96 mb-5 p-6">
     <div className="text-white flex items-center h-auto overflow-hidden break-words">
      {comment.comment}
     </div>

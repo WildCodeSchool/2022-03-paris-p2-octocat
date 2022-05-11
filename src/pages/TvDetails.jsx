@@ -1,6 +1,6 @@
 import Navbar from "../components/homepage/Navbar";
 import Footer from "../components/homepage/Footer";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 const axios = require('axios');
 
@@ -45,23 +45,34 @@ function TvDetails() {
     })
   },[locationPath]);
 
-    ////////// handle favorite feature
+  ////////// handle favorite feature
 
-    let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
+  let oldFavorites = localStorage.getItem('favorites') !== null ? JSON.parse(localStorage.getItem('favorites')) : [];  // useState for favorite button
+  const [isFavorite, setIsFavorite] = useState(null);
+
+  // make the favorite button state to persist
   
-    // make the favorite button state to persist (to do)
-    const [isFavorite, setIsFavorite] = useState(false);
+  useEffect(() => {
+    setIsFavorite(oldFavorites.find(movie => movie.id === movieDetails.id))
+  },[movieDetails.id])
+
+  // handle local storage on click
   
-    // handle local storage on click
-    const handleFavoriteclick = () => {
-      if (isFavorite) {
-        oldFavorites = oldFavorites.filter(movie => movie.id !== movieDetails.id);
-        localStorage.setItem('favorites', JSON.stringify(oldFavorites));
-      } else {
-        const newFavorites = [...oldFavorites, {'id': movieDetails.id}];
-        localStorage.setItem('favorites', JSON.stringify(newFavorites));
-      }
-      setIsFavorite(!isFavorite);
+  const handleFavoriteclick = () => {
+    if (isFavorite) {
+      oldFavorites = oldFavorites.filter(movie => movie.id !== movieDetails.id);
+      localStorage.setItem('favorites', JSON.stringify(oldFavorites));
+    } else {
+      const newFavorites = [...oldFavorites, {'id': movieDetails.id}];
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    }
+    setIsFavorite(!isFavorite);
+  }
+
+    const navigate = useNavigate();
+
+    const handleNavigatePlayPage = () => {
+      navigate("/play-page");
     }
 
   return (
@@ -70,7 +81,7 @@ function TvDetails() {
       <div className="py-4 w-screen">
         <div className="flex items-center justify-center">
           <div className="relative w-full h-[40vh] flex justify-center items-center sm:h-[60vh] bg-no-repeat bg-cover top-0" style={{backgroundImage:`url(${imgSrc}`}}>
-              <button className="absolute ">
+              <button className="absolute" onClick={handleNavigatePlayPage}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 sm:h-40 sm:w-40 opacity-50" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                 </svg>
