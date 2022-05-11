@@ -19,7 +19,7 @@ export const ModalForm = () => {
       />
       <input
        className="bg-neutral-800 text-slate-50 rounded p-2 w-72 mr-10 ml-10"
-       type="text"
+       type="Password"
        name="Password"
        placeholder="Password"
       />
@@ -32,9 +32,8 @@ export const ModalForm = () => {
        value="Sign In"
       />
       <div className="text-slate-50 text-s flex ml-10">
-       Don't have an account ?{" "}
+       Don't have an account ?
        <button className="ml-2" onClick={() => setShowModal(false)}>
-        {" "}
         Sign Up
        </button>
       </div>
@@ -56,7 +55,7 @@ export const ModalForm = () => {
       />
       <input
        className="bg-neutral-800 text-slate-50 rounded p-2 w-72 mr-10 ml-10"
-       type="text"
+       type="Password"
        name="Password"
        placeholder="Create password"
       />

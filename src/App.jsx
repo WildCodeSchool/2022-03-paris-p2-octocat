@@ -10,6 +10,7 @@ import AnimIntro from './components/homepage/AnimIntro';
 import FavoritesPage from './pages/FavoritesPage';
 import MovieTrailer from './components/MovieTrailer';
 import ContactPage from './pages/ContactPage';
+import CommentForm from './components/homepage/CommentForm';
 import PageNotFound from './pages/PageNotFound';
 import EshopPage from './pages/EshopPage';
 
